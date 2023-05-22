@@ -1,0 +1,76 @@
+
+Drawback of array : 
+
+1. Every array is of fixed size (whether the memory is allocated during 
+   compile time or runtime).  It cannot grow or shrink during program 
+   execution.
+2. It requires contiguous memory locations.
+3. Insertions and deletions are not possible / complicated in array.
+
+For e.g. 
+int arr[50];  // c lang  compile time ---- stack memory
+
+ 
+
+int arr1[]=new int[n];  // runtime   ---- heap memory
+
+We cannot change the memory size of arr or arr1 once it is allocated.
+
+--- To remove the drawbacks of array, linked list data structure is used.
+
+-----------------------------------------------------------------------------------
+
+Linked list : A linked list is an ordered collection of data elements
+which are stored at random memory locations and linked to one another.
+
+--- It is linear data structure -- elements are having one-to-one relationship
+    among themselves.
+--- It is dynamic (no fixed size) in nature --- it can grow or shrink during run-time.
+--- The elements in linked list are accessed sequentially.
+--- Elements are arranged in linked organization inside the computer's memory
+    at random locations.
+
+As LL is a data structure, we should able to define triplet - D,F,A
+
+For e.g. suppose we are maintaining the chain of person
+
+Data object : person
+
+Functions :
+1. create a chain (LL)
+2. insert at front 
+3. insert at end
+4. insert in between
+5. insert at position
+6. insert in sorted order
+7. delete from front
+8. delete from end
+9. delete from in between
+10. delete by position
+11. delete by value
+12. traversal (visit every person) - forward, backward
+13. Search
+14. Sort
+
+Axioms : 
+1. We need to maintain the reference of starting point (element) and/or ending point.
+2. Elements must be linked with each other.
+
+
+Types of linked list : broadly two types - linear and circular which is again
+categorized into two types - singly and doubly
+1. Linear singly linked list (SLL)
+2. Circular singly linked list (CSLL)
+3. Linear doubly linked list (DLL)
+4. Circular doubly linked list (CDLL)
+
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

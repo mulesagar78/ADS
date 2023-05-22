@@ -1,0 +1,276 @@
+1. Linear Singly linked list (SLL) :
+
+--- SLL is an ordered collection of data elements which are stored at random
+    memory locations and linked with one another, every element contains the
+    address or reference of the next element (successor element).
+--- In linked list every element is stored inside a structure (construct) called
+    node. So in SLL every node will contain the address of its successor node.
+--- As last node does not have any successor node, so it must contain null as
+    the address or reference of next node.
+--- For SLL, we need to maintain (mandatory) the address or reference of first 
+    node called as head node.  We can also maintain (not mandatory) the address 
+    or reference of last node to make some operations of SLL efficient. 
+
+---------------------------------------------------------------------------------------
+
+Operations on SLL :
+1. create SLL
+2. insert at first position
+3. insert at end (append)
+4. insert in between position
+5. insert after some value
+6. insert before some value
+7. forward traversal (display all node values from first to last)
+8. Delete from first position
+9. Delete from last position
+10. Delete by position
+11. Delete by value
+12. Sort
+13. Reverse display
+
+----------------------------------------------------------------------------------------------------------
+
+
+How to define the node of SLL in C language?
+
+--- Node must contain the information (element) and the address of the next
+    node which is of same type.  
+For e.g. if we want to maintain linked list for integer then information type
+is int, if we want maintain the temperature linked list, then information is
+of type float, if we want maintains the names of students as a linked list, then
+the information is of type character array.
+And plus we want to maintain the address i.e. pointer.
+As we want to store two different types of data (information + pointer), we
+define structure.
+
+Suppose we want to maintain the linked list of integer values,
+
+ typedef struct sllnode
+ {
+    int data; // information
+    struct sllnode * next; // address of the next node of same type
+ }SLLNODE;
+
+Note : As every node of linked list (whether it is SLL or DLL -- linear or
+       circular) contains the address of it's own type of node,  the node
+       structure is called as self-referential structure.
+
+
+ MCQ :
+Which of the following structure definition is self referential :
+a) struct node{
+    int value;
+     int *next;
+   };
+
+b) struct node{
+     int value1;
+     float value2;
+     int *ptr;
+     float *fptr;
+   }
+
+c)  struct node{
+     int value1; float value2;      // correct
+     struct node *ptr;}
+
+d) none 
+ 
+
+
+Suppose we want to maintain the linked list of temperature values,
+ 
+typedef struct sllnode
+ {
+    float data; // information
+    struct sllnode * next; // address of the next node of same type
+ }SLLNODE;
+
+
+Suppose we want to maintain the linked list of student records,
+
+typedef struct student
+{
+  int rollno;
+  char name[30];
+  float perc;
+}STUD;
+
+typedef struct sllnode
+ {
+    STUD data; // information
+    struct sllnode * next; // address of the next node of same type
+ }SLLNODE;
+
+
+Suppose we want to store the marks of 5 subjects of every student,
+
+typedef struct sllnode
+ {
+    int data[5]; // information
+    struct sllnode * next; // address of the next node of same type
+ }SLLNODE;
+
+
+
+-----------------------------------------------------------------------------------------
+
+How to create a node of a SLL?
+
+-- Node should be generated dynamically i.e. during runtime because SLL is
+   dynamic in nature (can grow or shrink during runtime).
+-- So we use malloc() or calloc() --- but used malloc() because we need
+   to create one node at a time (single block).
+
+typedef struct sllnode
+ {
+    int data; // information
+    struct sllnode * next; // address of the next node of same type
+ }SLLNODE;
+
+SLLNODE *createnode(int value)
+{
+   SLLNODE *nn;
+  
+   nn=(SLLNODE *)malloc(sizeof(SLLNODE));  
+   // same like for int type data, int *ptr=(int *)malloc(sizeof(int));
+   nn->data=value;
+   nn->next=NULL;   // important
+   return nn;
+  
+}
+
+We call this function in another function as :
+ SLLNODE *newnode;
+ newnode=createnode(20);
+
+Now, we need to add or attach this newnode into the singly linked list according
+to user requirement --- at first, at last, or in between, or after some value.
+
+----------------------------------------------------------------------------------------
+
+
+1. Travseral (in forward direction) ---- display()
+
+void display(SLLNODE *h)
+{ 
+   SLLNODE *temp;
+   temp=h;
+   if(h==NULL)
+      printf("\nLinked list is empty.");
+   else
+   {
+      while(temp!=NULL)
+	  {
+	      printf("%d\t",temp->data);
+		  temp=temp->next;  	
+	  } 	
+   }	  	
+}
+
+--------------------------------------------------------------------------------------
+
+2. Insert at first :
+
+SLLNODE *insertAtFirst(SLLNODE *head, int value)
+{
+	SLLNODE *nn;
+	nn=createnode(value);
+	nn->next=head;
+	head=nn;
+	return head;
+}
+
+--------------------------------------------------------------------------------
+
+3. Insert at position :
+
+SLLNODE * insertAtPos(SLLNODE *head,int value,int pos)
+{
+	SLLNODE *nn, *temp;
+	int i;
+	nn=createnode(value);
+	if(pos==1) // first position or empty list
+	{
+		nn->next=head;
+	    head=nn;
+	}
+	else // in between, at end and wrong position
+	{
+		temp=head;
+		for(i=1;temp!=NULL && i<pos-1;i++)
+		    temp=temp->next;
+		if(temp==NULL)
+		    printf("\nWrong position....");
+		else
+		{
+			nn->next=temp->next;
+			temp->next=nn;
+		}	    
+	}
+	return head;
+}
+
+-----------------------------------------------------------------------------------
+
+4. To release all nodes :
+
+void releaseall(SLLNODE *head)
+{
+	SLLNODE *temp=head;
+    while(temp!=NULL)
+	{
+		head=head->next;
+		free(temp);
+		temp=head;
+	}	
+}
+ 
+----------------------------------------------------------------------------------
+
+5. To insert before a value  :
+
+SLLNODE *insertBefore(SLLNODE *head,int value,int beforevalue)
+{
+	SLLNODE *nn,*prev,*temp;
+	nn=createnode(value);
+	if(head->data == beforevalue)
+	{
+		nn->next=head;
+	    head=nn;
+	}
+	else
+	{
+		temp=head;
+		prev=head;
+		while(temp!=NULL && temp->data!=beforevalue)
+		{
+			prev=temp;
+			temp=temp->next;
+		}
+		if(temp==NULL)
+		   printf("\nBefore value is not present in SLL.");
+		else
+		{
+			prev->next=nn;
+			nn->next=temp;
+		}   
+	}
+	return head;
+}
+
+--------------------------------------------------------------------------------
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+

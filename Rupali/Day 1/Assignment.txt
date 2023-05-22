@@ -1,0 +1,27 @@
+Assignment 1
+
+1. Write a Java program to find the index of an array element.
+2. You will be given an array and you need to find the third largest 
+
+3. You are given array consisting of n integers. Your task is to find the maximum length of an increasing subarray of the given array.
+
+A subarray is the sequence of consecutive elements of the array. Subarray is called increasing if each element of this subarray strictly greater than previous.
+i/p-5 1  7  2  11  15
+o/p -3
+
+Rearrange Everything
+Given an array of size n where all elements are in range from 0 to n-1, change contents of arr[] so that arr[i] = j is changed to arr[j] = i.
+i/p - 22   13 9 41
+o/p  - 22  9  13  41
+
+
+LL
+Implement Linled List function 
+1. insertAtBeg
+2. insertAtLAst
+1. deleteAtBeg
+2. deleteAtLAst
+5. display
+
+
+

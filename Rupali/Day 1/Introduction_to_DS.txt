@@ -1,0 +1,112 @@
+Data Structures :
+--- It is not a programming language.
+--- It is a concept which can be implemented in any programming language.
+--- It gives the abstract of the task.
+--- It tells what to do not how to do.
+--- It is mechanism which not only tells about how to store the data but it
+    also tells about how to manipulate that data with the different algorithms.
+
+
+--- In data structures - we discuss or analyse the algorithms to solve same 
+    type of problem.
+    for e.g. sorting - insertion sort, bubble sort, heap sort, merge sort ,e
+    
+searching - linear search and binary search.
+     Suppose we have 10 numbers -
+           54   32   12   6  -43    78   11    9  600    230 
+    We want to search 78.
+    In linear search, we compare 78 with each number one by one.
+     No. of comparisons = 6
+   
+   In binary search, we sort the list.
+           -43    6    9    11    12    32    54    78   230   600
+     We want to search 78.
+     We sort the list and then compare the search value the middle most
+     value.
+     In first iteration, middle value = 12 , not same
+     Divide the list into 2 halves, as 78 > 12 search in right partion
+                                        
+         32    54    78   230   600
+      In second iteration, middle value - 78 , same --- found
+      No. of comparisons = 2
+
+------------------------------------------------------------------------------------
+
+
+
+Data structure can be defined using triplet (D,F,A), as a set of domains D,
+a set of functions F and set of axioms (rules) A.
+
+For e.g. consider a queue of person
+D : person
+F : new person should get added in the queue
+    One person should be removed from the queue
+    checking minimum and maximum limit of a queue
+A : new person will stand at the end.
+    person at the first position will be removed from queue.
+    First person will be removed first (FIFO)
+
+
+For e.g. stack of chairs
+D : chairs
+F : new chair should get added
+    one chair should get removed
+    checking minimum and maximum limit of a stack
+A : new chair will be added at the top of stack.
+    the topmost chair will be removed first.
+    Last chair added will be removed first (LIFO / FILO).
+
+
+Data structures : array, linked list, stack, queue, graph, tree, hash table
+
+------------------------------------------------------------------------------------------
+
+Types of Data structures :
+
+1. Linear : The elements are arranged in a line i.e. they form
+   a sequence or a list.  There is an ordering among the elements i.e. first element,
+   second element, and so on.  
+   Every element has one-to-one relationship means every element has only one
+   predecessor element and only one successor element.
+   For e.g. array, stack, queue, linkedlist
+
+2. Non-linear : The elements are not arranged in a line i.e. they does not form
+   any sequence.  Elements have one-to-many relationship or many-to-many relationship
+   among themselves.
+   For e.g. road network, train network, organization chart, etc.
+   Tree and graph are non-linear data structures.
+
+3. Sequential access : the elements are accessed in sequence.
+   For e.g. stack, queue, linked list, tree, etc.
+
+4. Random access : we can access elements randomly.
+   For e.g. array 
+
+5. static DS : the memory is allocated during compile time (or runtime) and 
+   t cannot grow or shrink during program execution.
+   For e.g. array
+
+6. Dynamic DS : the memory is allocated during runtime and it can grow
+   or shrink during program execution.
+   For e.g. stack, queue, linked list, tree, graph
+
+---------------------------------------------------------------------------------
+
+Abstract Data Type : The ADT is a mathematical or conceptual definition of a 
+data structure defined using triplet (D,F,A). 
+
+So every data structure is an abstract data type.
+ADT gives the logical properties and operations of the data type without giving
+any details about the implementation.  Hence it is just an abstract concept.
+
+-----------------------------------------------------------------------------------
+
+Linked list - linear, sequential access and dynamic in nature.
+
+
+
+
+
+
+
+
